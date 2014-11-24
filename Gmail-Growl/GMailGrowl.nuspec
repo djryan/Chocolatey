@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata>
+    <id>gmailgrowl</id>
+    <title>GMail Growl</title>
+    <version>2.4.0</version>
+    <authors>Markus Mohnen</authors>
+    <owners>Damien Ryan</owners>
+    <summary>GMail Growl 2.4 notifier.</summary>
+    <description>Gmail Growl monitors a Gmail account for new mails and displays fancy desktop alerts.</description>
+    <projectUrl>http://gmailgrowl.blogspot.co.uk/</projectUrl>
+    <tags>gmail growl windows notification</tags>
+    <iconUrl>http://1.bp.blogspot.com/_iHkMsnkr3jI/ShCO6NkGSXI/AAAAAAAAAEk/GDMYSc9kaXs/s320/gmailgrowl.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <dependencies>
+      <dependency id="Growl" version="2.0.9.20130406"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,1 @@
+Install-ChocolateyPackage 'GMailGrowl' 'msi' '/qn' 'http://gmail-growl.appspot.com/gmailgrowl.msi'
