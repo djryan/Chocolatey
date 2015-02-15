@@ -3,10 +3,10 @@
   <metadata>
     <id>sigil</id>
     <title>Sigil</title>
-    <version>0.8.2.1</version>
+    <version>0.8.4</version>
     <authors>John Nachtimwald</authors>
     <owners>Damien Ryan</owners>
-    <summary>Sigil 0.8.2 ePub Editor.</summary>
+    <summary>Sigil 0.8.4 ePub Editor.</summary>
     <description>Sigil is a free, open source, multi-platform ebook editor. It is designed to edit books in ePub format.</description>
     <projectUrl>https://code.google.com/p/sigil/</projectUrl>
     <tags>epub editor books</tags>
