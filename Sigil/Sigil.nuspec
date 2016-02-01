@@ -3,7 +3,7 @@
   <metadata>
     <id>sigil</id>
     <title>Sigil</title>
-    <version>0.8.7</version>
+    <version>0.9.3</version>
     <authors>John Nachtimwald</authors>
     <owners>Damien Ryan</owners>
     <summary>Sigil ePub Editor.</summary>
