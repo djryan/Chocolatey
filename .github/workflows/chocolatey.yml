@@ -1,0 +1,70 @@
+name: Chocolatey Push
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  chocolatey:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Pack and Push Packages
+        env:
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+        shell: powershell
+        run: |
+          $packageFolders = @("TreeSheets", "Sigil", "Gmail-Growl", "System-Monitor")
+
+          foreach ($folder in $packageFolders) {
+            Write-Host "--------------------------------------------------"
+            Write-Host "Processing folder: $folder"
+
+            # Clean up previous nupkgs to avoid confusion
+            Remove-Item *.nupkg -ErrorAction SilentlyContinue
+
+            # Find nuspec in the folder
+            $nuspec = Get-ChildItem -Path $folder -Filter *.nuspec | Select-Object -First 1
+
+            if ($nuspec) {
+                Write-Host "Found nuspec: $($nuspec.FullName)"
+
+                # Pack
+                choco pack $nuspec.FullName
+                if ($LASTEXITCODE -ne 0) {
+                    Write-Error "Failed to pack $($nuspec.FullName)"
+                    continue
+                }
+
+                # Find the generated nupkg
+                $nupkg = Get-ChildItem -Filter *.nupkg | Select-Object -First 1
+
+                if ($nupkg) {
+                    Write-Host "Generated nupkg: $($nupkg.Name)"
+
+                    if ($env:CHOCO_API_KEY) {
+                        Write-Host "Pushing to Chocolatey..."
+                        choco push $nupkg.FullName --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY
+
+                        if ($LASTEXITCODE -eq 0) {
+                            Write-Host "Successfully pushed $($nupkg.Name)"
+                        } elseif ($LASTEXITCODE -eq 1) {
+                             # Exit code 1 usually means validation failure or generic error.
+                             # Chocolatey sometimes returns 1 if package already exists (depending on version).
+                             # We'll verify output in logs.
+                             Write-Warning "Failed to push $($nupkg.Name). Check logs for details (e.g., version already exists)."
+                        } else {
+                             Write-Warning "Failed to push $($nupkg.Name) with exit code $LASTEXITCODE."
+                        }
+                    } else {
+                        Write-Warning "CHOCO_API_KEY secret is not set. Skipping push."
+                    }
+                } else {
+                    Write-Error "No nupkg generated for $folder"
+                }
+            } else {
+                Write-Warning "No nuspec file found in $folder"
+            }
+          }
