@@ -3,7 +3,7 @@
   <metadata>
     <id>gmail-growl</id>
     <title>[DEPRECATED] GMail Growl</title>
-    <version>2.4.1.20251214</version>
+    <version>2.4.1</version>
     <authors>Markus Mohnen</authors>
     <owners>Damien Ryan</owners>
     <summary>GMail Growl 2.4 notifier.</summary>
