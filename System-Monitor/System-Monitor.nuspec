@@ -9,7 +9,7 @@
     <summary>System Monitor for Growl 1.2.1.</summary>
     <description>A hardware/system monitoring application with full Growl support. This package is deprecated as the upstream project is retired.</description>
     <projectUrl>http://blog.growlforwindows.com/2009/05/system-hardware-notifications.html</projectUrl>
-    <tags>system monitor growl windows notification</tags>
+    <tags>system monitor growl windows notification deprecated</tags>
     <iconUrl>http://www.growlforwindows.com/gfw/images/plugins/systemmonitor.png</iconUrl>
     <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
