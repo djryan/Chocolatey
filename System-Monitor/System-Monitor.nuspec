@@ -2,12 +2,12 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>system-monitor</id>
-    <title>System Monitor</title>
-    <version>1.2.1</version>
+    <title>[DEPRECATED] System Monitor</title>
+    <version>1.2.2</version>
     <authors>Brian Dunnington</authors>
     <owners>Damien Ryan</owners>
     <summary>System Monitor for Growl 1.2.1.</summary>
-    <description>A hardware/system monitoring application with full Growl support.</description>
+    <description>A hardware/system monitoring application with full Growl support. This package is deprecated as the upstream project is retired.</description>
     <projectUrl>http://blog.growlforwindows.com/2009/05/system-hardware-notifications.html</projectUrl>
     <tags>system monitor growl windows notification</tags>
     <iconUrl>http://www.growlforwindows.com/gfw/images/plugins/systemmonitor.png</iconUrl>
