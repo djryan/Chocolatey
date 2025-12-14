@@ -3,15 +3,15 @@
   <metadata>
     <id>sigil</id>
     <title>Sigil</title>
-    <version>0.9.6</version>
+    <version>2.7.0</version>
     <authors>John Nachtimwald</authors>
     <owners>Damien Ryan</owners>
     <summary>Sigil ePub Editor.</summary>
     <description>Sigil is a free, open source, multi-platform ebook editor. It is designed to edit books in ePub format.</description>
     <projectUrl>http://sigil-ebook.com/</projectUrl>
     <tags>epub editor books</tags>
-    <licenseUrl>https://github.com/user-none/Sigil/blob/master/COPYING.txt</licenseUrl>
-    <iconUrl>https://cdn.rawgit.com/Sigil-Ebook/Sigil/7cca9b68375b7735a16f96c49cc60e34b959b7ea/src/Resource_Files/icon/app_icon_128.png</iconUrl>
+    <licenseUrl>https://github.com/Sigil-Ebook/Sigil/blob/master/COPYING.txt</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/Sigil-Ebook/Sigil/master/src/Resource_Files/icon/app_icon_128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
   </metadata>
   <files>

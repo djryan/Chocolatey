@@ -3,7 +3,7 @@
   <metadata>
     <id>treesheets</id>
     <title>Treesheets</title>
-    <version>2015.9.13</version>
+    <version>2835</version>
     <authors>Wouter van Oortmerssen</authors>
     <owners>Damien Ryan</owners>
     <summary>Data Organizer.</summary>
@@ -11,7 +11,7 @@
     <projectUrl>http://strlen.com/treesheets/</projectUrl>
     <tags>mind map data organiser list spreadsheet</tags>
     <licenseUrl>https://github.com/aardappel/treesheets/blob/master/ZLIB_LICENSE.txt</licenseUrl>
-    <iconUrl>https://cdn.rawgit.com/aardappel/treesheets/master/treesheets/icon1.ico</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/aardappel/treesheets/master/treesheets/icon1.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
   </metadata>
   <files>
