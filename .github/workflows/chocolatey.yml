@@ -10,6 +10,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Pack and Push Packages
         env:
@@ -17,8 +19,71 @@ jobs:
         shell: powershell
         run: |
           $packageFolders = @("TreeSheets", "Sigil", "Gmail-Growl", "System-Monitor")
+          $eventName = "${{ github.event_name }}"
+          $before = "${{ github.event.before }}"
+          $sha = "${{ github.sha }}"
+
+          Write-Host "Event Name: $eventName"
+
+          $processAll = $false
+          $changedFiles = @()
+
+          if ($eventName -eq "push") {
+             Write-Host "Push event detected. Before: $before, After: $sha"
+
+             if ([string]::IsNullOrWhiteSpace($before) -or $before -match "^0+$") {
+                 # New branch or something where before is not set correctly
+                 Write-Host "Before commit is empty or zero. Trying to compare against HEAD~1..."
+                 try {
+                     $changedFiles = git diff --name-only HEAD~1 HEAD
+                 } catch {
+                     Write-Warning "Git diff failed. Processing all packages."
+                     $processAll = $true
+                 }
+             } else {
+                 # Standard push range
+                 # Note: If forced push, this might fail if 'before' is unreachable.
+                 # We capture stderr to avoid failing the step immediately if we want to fallback?
+                 # PowerShell by default continues on external command failure unless $ErrorActionPreference is Stop.
+                 $changedFiles = git diff --name-only $before $sha 2>&1
+                 if ($LASTEXITCODE -ne 0) {
+                     Write-Warning "Git diff failed (exit code $LASTEXITCODE). Processing all packages."
+                     $processAll = $true
+                 }
+             }
+          } else {
+             Write-Host "Not a push event. Processing all packages."
+             $processAll = $true
+          }
+
+          if (-not $processAll) {
+              Write-Host "Changed files:"
+              if ($changedFiles) {
+                  $changedFiles | ForEach-Object { Write-Host "  - $_" }
+              } else {
+                  Write-Host "  (None)"
+              }
+          }
 
           foreach ($folder in $packageFolders) {
+            if (-not $processAll) {
+                $hasChanges = $false
+                if ($changedFiles) {
+                    foreach ($file in $changedFiles) {
+                        # git diff returns paths with forward slashes
+                        if ($file -match "^$folder/") {
+                            $hasChanges = $true
+                            break
+                        }
+                    }
+                }
+
+                if (-not $hasChanges) {
+                    Write-Host "Skipping $folder (no changes detected)"
+                    continue
+                }
+            }
+
             Write-Host "--------------------------------------------------"
             Write-Host "Processing folder: $folder"
 
