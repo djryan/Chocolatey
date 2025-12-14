@@ -9,7 +9,7 @@
     <summary>GMail Growl 2.4 notifier.</summary>
     <description>Gmail Growl monitors a Gmail account for new mails and displays fancy desktop alerts. This package is deprecated as the upstream project is retired.</description>
     <projectUrl>http://gmailgrowl.blogspot.co.uk/</projectUrl>
-    <tags>gmail growl windows notification</tags>
+    <tags>gmail growl windows notification deprecated</tags>
     <iconUrl>http://1.bp.blogspot.com/_iHkMsnkr3jI/ShCO6NkGSXI/AAAAAAAAAEk/GDMYSc9kaXs/s320/gmailgrowl.png</iconUrl>
     <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
